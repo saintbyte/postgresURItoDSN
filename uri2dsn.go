@@ -15,9 +15,13 @@ func mapToString(m map[string]string) string {
 }
 
 func UriToDSN(URI string) (string, error) {
-	//postgresql://[user[:password]@][netloc][:port][/dbname][?param1=value1&...]
-	//"user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
-	//"host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
+	//Простая функция которая из database url делает строку DSN. ( Вообще это костыль GORM)
+	//
+	// Формат database url: postgresql://[user[:password]@][netloc][:port][/dbname][?param1=value1&...]
+	//
+	// Пример
+	//  из "postgresql://user:password@localhost:5432/dbname?param1=value1",
+	//	результат: "user=user password=password host=localhost port=5432 dbname=dbname param1=value"
 	if len(URI) < 14 {
 		return "", errors.New("wrong uri'")
 	}
