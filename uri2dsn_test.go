@@ -38,6 +38,15 @@ func TestUriToDSN(t *testing.T) {
 			err:    false,
 		},
 		{
+			input: "postgresql://user_111:passwordssf@qy-blue-block-65767118.eu-central-1.aws.neon.tech/neondb?sslmode=require&TimeZone=Asia%2FShanghai",
+			expect: []string{
+				"user=user_111", "password=passwordssf", "dbname=neondb",
+				"host=qy-blue-block-65767118.eu-central-1.aws.neon.tech",
+				"sslmode=require", "TimeZone=Asia/Shanghai",
+			},
+			err: false,
+		},
+		{
 			input:  "invalid-uri",
 			expect: []string{""},
 			err:    true,
