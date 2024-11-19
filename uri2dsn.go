@@ -25,8 +25,8 @@ func UriToDSN(URI string) (string, error) {
 	if len(URI) < 14 {
 		return "", errors.New("wrong uri'")
 	}
-	if URI[0:13] != "postgresql://" {
-		return "", errors.New("wrong protocol, support only 'postgresql://'")
+	if URI[0:13] != "postgresql://" || URI[0:11] != "postgres://" {
+		return "", errors.New("wrong protocol, support only 'postgresql://' or 'postgres://' ")
 	}
 	UriObj, err := url.Parse(URI)
 	if err != nil {
