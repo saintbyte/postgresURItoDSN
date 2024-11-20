@@ -20,5 +20,4 @@ func main() {
 		return
 	}
 	slog.Info("dsn: ", dsn)
-	return
 }
