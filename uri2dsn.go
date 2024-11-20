@@ -44,7 +44,7 @@ func UriToDSN(URI string) (string, error) {
 	path := UriObj.Path[1:]
 	dsnMap["dbname"] = path
 	if UriObj.Hostname() == "" {
-		return "", errors.New("Empty host")
+		return "", errors.New("empty host")
 	}
 	dsnMap["host"] = UriObj.Hostname()
 	port := UriObj.Port()
