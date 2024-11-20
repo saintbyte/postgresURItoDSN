@@ -51,6 +51,14 @@ func TestUriToDSN(t *testing.T) {
 			expect: []string{""},
 			err:    true,
 		},
+		{
+			input: "postgres://default:xxxxxxxxxxxxxxxx@dqy-blue-block-65767118.eu-central-1.aws.neon.tech:5432/verceldb?sslmode=require",
+			expect: []string{
+				"port=5432", "sslmode=require", "user=default", "password=xxxxxxxxxxxxxxxx",
+				"dbname=verceldb", "host=dqy-blue-block-65767118.eu-central-1.aws.neon.tech",
+			},
+			err: false,
+		},
 	}
 
 	for _, tc := range testCases {

@@ -14,7 +14,6 @@ func main() {
 		database_url = "postgresql://user_111:passwordssf@" +
 			"qy-blue-block-65767118.eu-central-1.aws.neon.tech/neondb?sslmode=require&TimeZone=Asia%2FShanghai"
 	}
-	slog.Info("database_url: ", database_url)
 	dsn, err := postgresURItoDSN.UriToDSN(database_url)
 	if err != nil {
 		slog.Error("dsn error: ", err)
